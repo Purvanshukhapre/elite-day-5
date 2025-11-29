@@ -1,0 +1,153 @@
+/* =============== TOPBAR WRAPPER =============== */
+
+.topbar {
+  height: 70px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.06);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* =============== SEARCH BAR =============== */
+
+.topbar-search-container {
+  display: flex;
+  align-items: center;
+  background: #f3f4f6;
+  padding: 10px 14px;
+  border-radius: 10px;
+  width: 320px;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 18px;
+  opacity: 0.6;
+}
+
+.topbar-search {
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+}
+
+/* =============== RIGHT SIDE =============== */
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.topbar-bell {
+  width: 22px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* USER AREA */
+
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.topbar-username {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.topbar-avatar {
+  width: 38px;
+  height: 38px;
+  background: #00c6d8;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* =============== DROPDOWN =============== */
+
+.topbar-dropdown {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  width: 220px;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.12);
+  z-index: 100;
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.dropdown-avatar {
+  width: 40px;
+  height: 40px;
+  background: #00c6d8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dropdown-name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: none;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+}
+
+.dropdown-item img {
+  width: 18px;
+}
+/* Avatar images */
+.topbar-avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown-avatar-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}

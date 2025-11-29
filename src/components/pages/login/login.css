@@ -1,0 +1,136 @@
+/* =============== LOGIN PAGE STYLES =============== */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  min-height: 100vh;
+  gap: 40px;
+  background: #f4f5f7;
+}
+
+/* Left (form) */
+.login-left {
+  width: 420px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.login-sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-input {
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+
+.login-input:focus {
+  border: 1px solid #00c6d8;
+  box-shadow: 0 0 0 3px rgba(0, 198, 216, 0.15);
+}
+
+.login-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-link-small {
+  font-size: 13px;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #00c6d8;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-error {
+  margin-top: 8px;
+  padding: 10px;
+  background: rgba(185, 28, 28, 0.08);
+  color: #b91c1c;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-alt {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Right side illustration image */
+.login-right {
+  flex: 1;
+  min-height: 380px;
+  border-radius: 12px;
+
+  /* change this to your figma image path */
+  background-image: url("/login-illustration.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* RIGHT SIDE IMAGE SECTION */
+.login-right {
+  width: 50%;
+  background: #f8f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-illustration {
+  width: 75%;
+  max-width: 450px;
+  object-fit: contain;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .login-right {
+    width: 100%;
+    height: 240px;
+  }
+}

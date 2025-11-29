@@ -1,0 +1,87 @@
+/* Global page background */
+body {
+  background-color: #f4f6f8;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+/* AUTH LAYOUT */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Left side */
+.auth-left {
+  padding: 40px;
+  width: 460px;
+}
+
+/* Right side */
+.auth-right {
+  padding: 40px;
+  background: #ffffff;
+  width: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-right img {
+  max-width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #111827;
+  width: 220px;
+  padding: 24px;
+  color: white;
+}
+
+.sidebar .nav-link {
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.sidebar .nav-link:hover {
+  color: white;
+}
+
+/* Dashboard main content */
+.main-content {
+  padding: 24px;
+  width: 100%;
+}
+
+/* Dashboard cards */
+.card-box {
+  background: white;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.07);
+  height: 120px;
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+  .auth-card {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .auth-left,
+  .auth-right {
+    width: 100%;
+  }
+}

@@ -1,0 +1,149 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-main {
+  padding: 25px 35px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  color: #111827;
+}
+
+/* TOP ROW — 2 CARDS */
+.dash-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+/* BOTTOM ROW — 3 CARDS */
+.dash-row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* GENERAL CARD DESIGN */
+.dash-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.dash-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.view-btn {
+  padding: 6px 14px;
+  background: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* TABLES */
+.dash-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dash-table th,
+.dash-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.dash-table th {
+  font-weight: 600;
+}
+
+/* LEGAL POLICY */
+.legal-policy-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legal-open {
+  background: #111827;
+  padding: 14px;
+  border-radius: 10px;
+  color: white;
+}
+
+.legal-item {
+  background: #f3f4f6;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* REPORT */
+.report-text {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* RATING */
+.rating-chart-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.rating-chart {
+  width: 140px;
+}
+
+/* LOADING */
+.dash-loader {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .dash-row-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .dash-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  .dash-row-3 {
+    grid-template-columns: 1fr;
+  }
+}
