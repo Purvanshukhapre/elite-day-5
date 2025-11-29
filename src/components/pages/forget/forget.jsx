@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../auth";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Loader from "../../loader";
 import "./forget.css";
 
 export default function Forgot() {
-  const { token } = useAuth();
-  const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-
-  // If logged in → redirect to dashboard
-  useEffect(() => {
-    if (token) navigate("/dashboard", { replace: true });
-  }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,29 +15,31 @@ export default function Forgot() {
     setMsg("");
 
     if (!email.trim()) {
-      setError("Please enter your email address.");
+      setError("Please enter your email");
       return;
     }
 
     setLoading(true);
 
     try {
-      const response = await fetch("https://elite-day-3-5.onrender.com/auth/forgot-password", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://elite-day-3-5.onrender.com/auth/forgot-password",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
-        setMsg("We have sent reset instructions to your email.");
+        setMsg("Check your email for reset instructions.");
         setEmail("");
       } else {
-        setError(data.message || "Unable to process request.");
+        setError(data.message || "Something went wrong");
       }
-    } catch (e){
-      console.log(e)
+    } catch {
       setError("Network error. Try again.");
     }
 
@@ -55,46 +48,31 @@ export default function Forgot() {
 
   return (
     <div className="forgot-page">
-
-      {/* LEFT SIDE */}
+      {/* LEFT */}
       <div className="forgot-left">
-        <h1 className="forgot-title">Forgot password?</h1>
-        <p className="forgot-sub">
-          Enter the email you used to create your account.  
-          We will send you instructions to reset your password.
-        </p>
-
-        <form onSubmit={handleSubmit} className="forgot-form">
+        <h1>Forgot Password?</h1>
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email"
-            className="forgot-input"
+            placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
-          <button className="forgot-btn" disabled={loading}>
-            {loading ? <Loader size={18} /> : "Send Reset Link"}
+          <button disabled={loading}>
+            {loading ? <Loader /> : "Send Reset Link"}
           </button>
-
-          {msg && <div className="forgot-msg">{msg}</div>}
-          {error && <div className="forgot-error">{error}</div>}
         </form>
 
-        <Link to="/login" className="forgot-back">
-          ← Back to login
-        </Link>
+        {msg && <p className="success">{msg}</p>}
+        {error && <p className="error">{error}</p>}
+
+        <Link to="/login">← Back to login</Link>
       </div>
 
-      {/* RIGHT SIDE ILLUSTRATION */}
+      {/* RIGHT */}
       <div className="forgot-right">
-        <img
-          src="/Frame (2).png"
-          alt="Forgot password illustration"
-          className="forgot-illustration"
-        />
+        <img src="/Frame (2).png" alt="" />
       </div>
-
     </div>
   );
 }
