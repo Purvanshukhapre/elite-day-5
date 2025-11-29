@@ -4,7 +4,7 @@ import Topbar from "../../headers/Header";
 import Loader from "../../loader";
 import { useAuth } from "../../auth";
 import { useNavigate } from "react-router-dom";
-import "./Location.css";
+import "./location.css";
 
 export default function Location() {
   const { token } = useAuth();

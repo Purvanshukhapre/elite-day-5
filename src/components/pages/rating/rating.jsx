@@ -4,7 +4,7 @@ import Topbar from "../../headers/Header";
 import Loader from "../../loader";
 import { useAuth } from "../../auth";
 import { useNavigate } from "react-router-dom";
-import "./Rating.css";
+import "./rating.css";
 
 export default function Rating() {
   const { token } = useAuth();

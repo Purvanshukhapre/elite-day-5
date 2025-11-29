@@ -4,7 +4,7 @@ import Topbar from "../../headers/Header";
 import Loader from "../../loader";
 import { useAuth } from "../../auth";
 import { useNavigate } from "react-router-dom";
-import "./Reports.css";
+import "./reports.css";
 
 export default function Reports() {
   const { token } = useAuth();
