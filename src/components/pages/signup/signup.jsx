@@ -2,28 +2,43 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../auth";
 import "./signup.css";
-import Loader from "../../loader";  // <-- you forgot this import
+import Loader from "../../loader";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Register() {
   const { token } = useAuth();
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Redirect if logged in
+  // -------------------------------
+  // AUTO-REDIRECT LOGIN HANDLING
+  // -------------------------------
   useEffect(() => {
-    if (token) navigate("/dashboard", { replace: true });
+    const params = new URLSearchParams(window.location.search);
+    const googleToken = params.get("token");
+
+    if (googleToken) {
+      localStorage.setItem("token", googleToken);
+      navigate("/", { replace: true });
+    }
+
+    if (token) {
+      navigate("/", { replace: true });
+    }
   }, [token, navigate]);
 
+  // -------------------------------
+  // NORMAL EMAIL SIGNUP
+  // -------------------------------
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!name.trim() || !email.trim() || !password.trim()) {
+    if (!email.trim() || !password.trim()) {
       setError("Please fill in all fields.");
       return;
     }
@@ -31,11 +46,14 @@ export default function Register() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://elite-day-3-2.onrender.com/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const response = await fetch(
+        "https://elite-production-5537.up.railway.app/signup",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -45,34 +63,45 @@ export default function Register() {
       } else {
         setError(data.message || "Failed to create account.");
       }
-    } catch{
+    } catch {
       setError("Network error. Try again.");
     }
 
     setLoading(false);
   };
 
+  // -------------------------------
+  // GOOGLE SIGNUP REDIRECT
+  // -------------------------------
+  const signupwithgoogle = () => {
+    window.location.href =
+      "https://elite-production-5537.up.railway.app/googlelogin";
+  };
+
+  // -------------------------------
+  // UI RENDER
+  // -------------------------------
   return (
-    <div className="register-page">
+    <div className="signup-container">
 
-      {/* LEFT SIDE FORM */}
-      <div className="register-left">
-        <h1 className="register-title">Create account</h1>
-        <p className="register-sub">Start your journey with Searchkro</p>
+      {/* LEFT IMAGE */}
+      <div className="signup-left">
+        <img
+          src="/Frame (1).png"
+          alt="Signup illustration"
+          className="signup-image"
+        />
+      </div>
 
-        <form onSubmit={handleRegister} className="register-form">
-          <input
-            type="text"
-            placeholder="Name"
-            className="register-input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+      {/* RIGHT FORM */}
+      <div className="signup-right">
+        <h1 className="signup-title">Welcome back</h1>
 
+        <form className="signup-form" onSubmit={handleRegister}>
           <input
             type="email"
             placeholder="Email"
-            className="register-input"
+            className="signup-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -80,32 +109,27 @@ export default function Register() {
           <input
             type="password"
             placeholder="Password"
-            className="register-input"
+            className="signup-input"
             value={password}
             onChange={(e) => setPass(e.target.value)}
           />
 
-          <button className="register-btn" disabled={loading}>
+          <button className="signup-btn" disabled={loading}>
             {loading ? <Loader size={20} color="#fff" /> : "Create account"}
           </button>
 
-          {error && <div className="register-error">{error}</div>}
+          {error && <div className="signup-error">{error}</div>}
         </form>
 
-        <p className="register-alt">
+        <p className="signup-alt">
           Already have an account? <Link to="/login">Log in</Link>
         </p>
-      </div>
 
-      {/* RIGHT SIDE IMAGE */}
-      <div className="register-right">
-        <img
-          src="/Frame (1).png"
-          alt="Create account illustration"
-          className="register-illustration"
-        />
+        <button className="google-btn" onClick={signupwithgoogle}>
+          <FcGoogle className="google-icon" />
+          Sign up with Google
+        </button>
       </div>
-
     </div>
   );
 }

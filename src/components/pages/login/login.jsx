@@ -15,43 +15,57 @@ export default function Login() {
 
   // If already logged in → redirect
   useEffect(() => {
-    if (token) navigate("/dashboard", { replace: true });
+    if (token) navigate("/", { replace: true });
   }, [token, navigate]);
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    setError("");
+  e.preventDefault();
+  setError("");
 
-    if (!email.trim() || !password.trim()) {
-      setError("Please fill in all fields.");
+  if (!email.trim() || !password.trim()) {
+    setError("Please fill in all fields.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch("https://elite-production-5537.up.railway.app/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+    console.log("LOGIN RESPONSE:", data);
+
+    if (!response.ok) {
+      setError(data.message || "Invalid email or password.");
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
+    // HANDLE DIFFERENT TOKEN NAMES
+    const token = data.token || data.accessToken || data.jwt;
 
-    try {
-      const response = await fetch("https://elite-day-3-5.onrender.com/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.token) {
-        // Save REAL token from your API
-        login(data.token);
-
-        navigate("/dashboard", { replace: true });
-      } else {
-        setError(data.message || "Invalid email or password.");
-      }
-    } catch {
-      setError("Network error. Try again.");
+    if (!token) {
+      setError("Login failed: No token received from server.");
+      setLoading(false);
+      return;
     }
+
+    // Save token
+    login(token);
+    navigate("/", { replace: true });
+
+  } catch (err) {
+    console.log(err);
+    setError("Network error. Try again.");
+  }
 
   setLoading(false);
 };
+
 
 
   return (

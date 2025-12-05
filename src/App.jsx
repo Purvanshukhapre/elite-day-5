@@ -19,7 +19,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot" element={<Forgot />} />
-        <Route path="/reset-password/:token" element={<Reset />} />
+        <Route path="/reset" element={<Reset />} />
 
         {/* DASHBOARD ROUTES */}
         <Route

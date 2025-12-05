@@ -1,128 +1,142 @@
-/* =============== REGISTER PAGE STYLES =============== */
-
-.register-page {
+/* FULL PAGE LAYOUT */
+.signup-container {
+  display: flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 80px;
+  gap: 60px;
+}
+
+/* LEFT SIDE – IMAGE */
+.signup-left {
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px;
-  gap: 200px;
-  background: #f4f5f7;
 }
 
-/* Left (form) */
-.register-left {
-  width: 420px;
-  background: #ffffff;
-  padding: 32px;
-  border-radius: 8px;
-  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.08);
+.signup-image {
+  width: 75%;
+  max-width: 550px;
 }
 
-.register-title {
+/* RIGHT SIDE – FORM */
+.signup-right {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-title {
   font-size: 28px;
-  margin: 0;
+  margin-bottom: 25px;
   font-weight: 600;
   color: #111827;
 }
 
-.register-sub {
-  font-size: 14px;
-  color: #6b7280;
-  margin-top: 4px;
-  margin-bottom: 20px;
-}
-
-/* form */
-.register-form {
+/* FORM */
+.signup-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.register-input {
+.signup-input {
   padding: 12px 14px;
   border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #ddd;
   font-size: 15px;
+}
+
+.signup-input:focus {
+  border-color: #00c6d8;
   outline: none;
-  transition: border 0.15s, box-shadow 0.15s;
 }
 
-.register-input:focus {
-  border: 1px solid #00c6d8;
-  box-shadow: 0 0 0 3px rgba(0, 198, 216, 0.15);
-}
-
-/* button */
-.register-btn {
+/* MAIN BUTTON */
+.signup-btn {
   background: #00c6d8;
-  color: #ffffff;
+  color: white;
   padding: 12px;
-  border: none;
-  border-radius: 8px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.register-btn:disabled {
+.signup-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* error box */
-.register-error {
-  margin-top: 8px;
-  padding: 10px;
-  background: rgba(185, 28, 28, 0.08);
+/* ERROR MESSAGE */
+.signup-error {
+  background: #ffe3e3;
   color: #b91c1c;
+  padding: 10px;
   border-radius: 6px;
   font-size: 14px;
+  margin-top: 4px;
 }
 
-/* alt text */
-.register-alt {
-  margin-top: 20px;
+/* ALT TEXT */
+.signup-alt {
+  margin-top: 14px;
   font-size: 14px;
-  color: #6b7280;
+  color: #555;
 }
 
-/* Right Side Illustration */
-.register-right {
-  flex: 1;
-  min-height: 380px;
-  border-radius: 12px;
+/* GOOGLE BUTTON */
+.google-btn {
+  width: 100%;                     /* FULL WIDTH */
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
 
-  /* change this to your Figma image */
-  background-image: url("/register-illustration.png");
-  background-size: cover;
-  background-position: center;
-}
-.register-right {
-  width: 50%;
-  background: #f8f9fb;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  transition: background 0.2s ease;
 }
 
-.register-illustration {
-  width: 75%;
-  max-width: 450px;
-  object-fit: contain;
+.google-btn:hover {
+  background: #f3f4f6;
+}
+
+.google-icon {
+  font-size: 22px;                 /* Nice size for the logo */
 }
 
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  .register-page {
+  .signup-container {
     flex-direction: column;
-    padding: 20px;
+    height: auto;
+    padding: 25px;
   }
-  .register-right {
+
+  .signup-left {
     width: 100%;
-    height: 240px;
+  }
+
+  .signup-right {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .signup-image {
+    width: 90%;
   }
 }
